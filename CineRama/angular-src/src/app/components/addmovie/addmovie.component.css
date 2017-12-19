@@ -1,0 +1,47 @@
+div.customContainer{
+    margin-top: 80px;
+    background-color: #222;
+    color: white;
+}
+
+div.image{
+    padding-top: 10px;
+    height: 400px;
+}
+img.center {
+    display: block;
+    margin: auto;
+    height: 100%;
+}
+#title{
+    text-align: center;
+}
+#overview{
+    margin: auto;
+    width: 70%;
+    padding: 50px 50px;
+}
+
+div.row.list-group-item{
+    background-color: rgb(24, 24, 24);
+    color: white;
+}
+
+.cast{
+    margin: auto;
+    width: 70%;
+    padding: 50px 50px;
+}
+
+div.flash-msg{
+    margin: auto;
+    width: 70%;
+    padding: 10px 10px;
+}
+
+.delete{
+    margin: auto;
+    width: 70%;
+    padding: 50px;
+    padding-left: 30%;
+}

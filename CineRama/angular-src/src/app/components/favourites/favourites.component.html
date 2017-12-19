@@ -1,0 +1,23 @@
+<div class="container customContainer alert-info" *ngIf="!favourites">
+    <h4>You have no favourites as of yet. Plase go to the dashboard and add.</h4>
+</div>
+<div class="container customContainer" *ngIf="favourites">
+    <h2>My Favourites</h2>
+    <ngx-flash-messages></ngx-flash-messages>
+    <div class="list-group">
+        <div class="row list-group-item" *ngFor="let favourite of favourites;">
+            <div class="col-md-2">
+                <img class="image" src="https://image.tmdb.org/t/p/w500{{favourite.poster_path}}">
+            </div>
+            <div class="col-md-9 col-sm-9">
+                <div class="details">
+                    <p>Title : {{favourite.title}} </p>
+                    <p>Overview : {{favourite.overview}} </p>
+                    <a (click)="onClickDelete(favourite.id)" class="btn btn-danger btn-md" style="float:right">
+                        <span class="glyphicon glyphicon-remove-sign"></span> Remove
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

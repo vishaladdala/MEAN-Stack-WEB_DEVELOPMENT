@@ -1,0 +1,77 @@
+<div class="container customContainer" *ngIf="movieData">
+  <div class="image">
+      <img class="center" src="https://image.tmdb.org/t/p/w500{{movieData.movie.poster_path}}">
+  </div>
+  <div class="flash-msg">
+      <ngx-flash-messages></ngx-flash-messages>
+  </div>
+  <div class="info">
+    <h2 id="title">
+      {{movieData.movie.title}} 
+      <a class="btn btn-info btn-md" (click)="onClickAddToFavs()">
+          <span class="glyphicon glyphicon-plus"></span> Add to Favourites 
+      </a>
+    </h2>
+    <div class="delete" *ngIf="admin">
+        <a class="btn btn-danger btn-md" (click)="onClickDelete()">
+            <span class="glyphicon glyphicon-minus"></span> Delete Movie 
+        </a>
+        <a class="btn btn-primary btn-md" (click)="onClickEdit()">
+            <span class="glyphicon glyphicon-pencil"></span> Edit Movie 
+        </a>
+    </div>
+    <div id="overview">
+      <p>{{movieData.movie.overview}}</p>
+      <p>Rating: {{movieData.movie.vote_average}} / 10</p>
+    </div>
+  </div>
+
+  <div class="cast">
+    <form (submit)="onReviewSubmit()">
+      <div class="form-group">
+        <label for="comment">Write a review:</label>
+        <textarea class="form-control" [(ngModel)]="review" name="review" rows="5" id="comment"></textarea>
+      </div>
+      <div class="form-group">
+          <div>
+            <label>Please rate the movie out of 10 : </label>
+            <input type="text" [(ngModel)]="rating" name="rating" class="form-control" >
+          </div>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+  </div>
+
+  <div class="cast list-group">
+    <h3>Reviews:</h3>
+    <div class="row list-group-item" *ngFor="let review of movieData.review;">
+      <div class="col-lg-9" >
+          <p> Reviewed by : {{review.user_id}}</p>
+          <p> {{review.review}}</p>
+          <p> Rating: {{review.rating}} / 10</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cast">
+    <h3>Cast:</h3>
+    <div class="row" *ngFor="let cast of movieData.cast.cast| slice:0:6;">
+      <div class="col-lg-2" >
+          <div class="thumbnail">
+              <div>
+                  <img class="castThumbnail" src="https://image.tmdb.org/t/p/w500{{cast.profile_path}}" alt="{{cast.name}}" style="width:100%;color:black">
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-7">
+          <div class="caption">
+              <h4>{{cast.name}}</h4>
+              <p>
+                starring as {{cast.character}} 
+              </p>
+            </div>
+      </div>
+  </div>
+  </div>
+</div>

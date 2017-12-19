@@ -1,0 +1,21 @@
+<div class="container customContainer" *ngIf="movieData">
+        <div class="image">
+            <img class="center" src="https://image.tmdb.org/t/p/w500{{movieData.movie.poster_path}}">
+        </div>
+        <div class="flash-msg">
+            <ngx-flash-messages></ngx-flash-messages>
+        </div>
+        <div class="cast">
+            <form (submit)="onEditSubmit()"> <!-- submit is an event and in angular 2 we call a method on the occurance of this event -->
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" [(ngModel)]="title" name="title"  class="form-control" value="{{title}}" >
+    
+                    <label for="comment">Overview:</label>
+                    <textarea class="form-control" [(ngModel)]="overview" name="overview" rows="5" id="comment" value="{{overview}}" ></textarea>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+      </div>
+      
